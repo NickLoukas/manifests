@@ -5,4 +5,11 @@ metadata:
 spec:
   predictor:
     sklearn:
+      resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi 
       storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
