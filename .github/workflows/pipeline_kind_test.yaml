@@ -28,3 +28,10 @@ jobs:
 
     - name: Build & Apply manifests
       run: ./tests/gh-actions/install_pipelines.sh
+
+    - name: Deploy test pipeline
+      run: |
+        python3 ./tests/gh-actions/test_pipeline.py
+        ./tests/gh-actions/install_argo_cli.sh
+        kfp run submit -e test_pipeline -f ./tests/gh-actions/test_pipeline.py.yaml
+        argo wait @latest -n kubeflow-user
