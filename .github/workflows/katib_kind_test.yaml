@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - apps/katib/upstream/**
+      - nickloukas-gh-action-apply-pipelines
 
 jobs:
   build:
