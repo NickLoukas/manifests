@@ -31,8 +31,8 @@ jobs:
 
     - name: Deploy test pipeline
       run: |
+        pip3 install kfp==1.8.4
         python3 ./tests/gh-actions/test_pipeline.py
         ./tests/gh-actions/install_argo_cli.sh
-        pip install kfp==1.8.4
         kfp run submit -e test_pipeline -f ./tests/gh-actions/test_pipeline.py.yaml
         argo wait @latest -n kubeflow-user
